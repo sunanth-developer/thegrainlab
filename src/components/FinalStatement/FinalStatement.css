@@ -1,0 +1,51 @@
+/* Mobile: statement first, photograph below. Desktop: type sits in the
+   photograph's own dark negative space (both share one grid cell). */
+.final {
+  display: grid;
+  background: var(--plum-950);
+  color: var(--text);
+}
+
+.final__content {
+  display: grid;
+  gap: var(--space-6);
+  justify-items: start;
+  padding-block: var(--section-y) var(--space-7);
+}
+
+.final__title {
+  max-width: 11ch;
+}
+
+.final__media {
+  order: 2;
+  aspect-ratio: 4 / 3;
+}
+
+.final__mask,
+.final__parallax {
+  height: 100%;
+}
+
+@media (min-width: 900px) {
+  .final {
+    grid-template-areas: 'stack';
+    min-height: clamp(560px, 86svh, 960px);
+  }
+
+  .final__media,
+  .final__content {
+    grid-area: stack;
+  }
+
+  .final__media {
+    order: 0;
+    aspect-ratio: auto;
+  }
+
+  .final__content {
+    position: relative;
+    align-content: center;
+    padding-block: var(--space-9);
+  }
+}

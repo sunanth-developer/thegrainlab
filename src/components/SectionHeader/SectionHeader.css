@@ -1,0 +1,30 @@
+.section-header {
+  display: grid;
+  gap: var(--space-5) var(--gutter);
+  margin-bottom: clamp(3rem, 1.5rem + 5vw, 6.5rem);
+}
+
+.section-header__main {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.section-header__aside {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+  align-content: end;
+}
+
+.section-header__intro {
+  max-width: 36ch;
+  color: var(--text-muted);
+}
+
+@media (min-width: 900px) {
+  .section-header {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    justify-content: space-between;
+    align-items: end;
+  }
+}

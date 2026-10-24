@@ -1,0 +1,172 @@
+{
+  "cat-dosa": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "color": "#983818"
+  },
+  "cat-flours": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#b8b898"
+  },
+  "cat-pancakes": {
+    "width": 1152,
+    "height": 864,
+    "widths": [
+      480,
+      800,
+      1152
+    ],
+    "color": "#683818"
+  },
+  "cat-pasta": {
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      800,
+      1280
+    ],
+    "color": "#f8e8d8"
+  },
+  "cat-porridge": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#180818"
+  },
+  "closing": {
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      800,
+      1280
+    ],
+    "color": "#381828"
+  },
+  "format-dosa": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8e8"
+  },
+  "format-flours": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8d8"
+  },
+  "format-pancakes": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8e8"
+  },
+  "format-pasta": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8e8"
+  },
+  "format-porridge": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8e8"
+  },
+  "gallery-dosa": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#080808"
+  },
+  "gallery-pour": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#381828"
+  },
+  "gallery-stalks": {
+    "width": 1152,
+    "height": 864,
+    "widths": [
+      480,
+      800,
+      1152
+    ],
+    "color": "#180818"
+  },
+  "gallery-table": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1024
+    ],
+    "color": "#382838"
+  },
+  "hero": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#281828"
+  },
+  "interlude": {
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      800,
+      1280
+    ],
+    "color": "#180818"
+  }
+}

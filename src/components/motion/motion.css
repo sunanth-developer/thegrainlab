@@ -1,0 +1,34 @@
+.line-reveal__line {
+  display: block;
+  overflow: hidden;
+  /* room for descenders and italic overhang inside the mask */
+  padding: 0.04em 0.08em 0.12em 0;
+  margin: -0.04em -0.08em -0.12em 0;
+}
+
+.line-reveal__inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.mask-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.mask-reveal__inner {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 60%;
+}
+
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.parallax__inner {
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
