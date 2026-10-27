@@ -1,0 +1,158 @@
+.hero {
+  position: relative;
+  overflow: clip;
+  padding-top: calc(var(--header-h) + 1rem + clamp(1.5rem, 1rem + 2vw, 3rem));
+  padding-bottom: var(--space-8);
+  background:
+    radial-gradient(70% 60% at 85% 20%, rgb(215 166 70 / 0.18), transparent 70%),
+    var(--parchment-100);
+  color: var(--cocoa-900);
+}
+
+.hero__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.hero__label {
+  color: var(--terracotta-600);
+}
+
+.hero__title {
+  font-size: var(--display);
+  line-height: 0.94;
+  letter-spacing: -0.025em;
+}
+
+.hero__title em {
+  color: var(--cocoa-700);
+}
+
+.hero__lede p {
+  max-width: 30ch;
+  font-size: var(--text-lg);
+  line-height: 1.45;
+  color: var(--cocoa-700);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-4);
+  padding-top: var(--space-2);
+}
+
+/* Equal widths, so the actions line up whether they sit side by side or wrap. */
+.hero__actions .btn {
+  justify-content: space-between;
+  min-width: 17.5rem;
+}
+
+@media (max-width: 599px) {
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    min-width: 0;
+  }
+}
+
+/* ---------- Visual: arched photograph with the three real pouches in front ---------- */
+.hero__visual {
+  position: relative;
+  padding-left: 18%;
+  padding-bottom: 6%;
+}
+
+.hero__photo-wrap {
+  will-change: transform;
+}
+
+.hero__photo {
+  aspect-ratio: 3 / 4;
+  border-radius: 999px 999px var(--radius-md) var(--radius-md);
+}
+
+.hero__photo .img {
+  height: 100%;
+}
+
+.hero__packs {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  bottom: 0;
+  width: 74%;
+  aspect-ratio: 1 / 0.9;
+}
+
+.hero__pouch {
+  position: absolute;
+  bottom: 0;
+  width: 44%;
+}
+
+.hero__pouch--left {
+  left: 0;
+  bottom: 8%;
+}
+
+.hero__pouch--right {
+  left: 56%;
+  bottom: 6%;
+}
+
+.hero__pouch--front {
+  left: 25%;
+  width: 50%;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    align-content: center;
+  }
+
+  .hero__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: center;
+  }
+
+  .hero__copy {
+    grid-column: 1 / span 7;
+    padding-bottom: var(--space-6);
+  }
+
+  /* The pouches sit inside the visual column so they can never cover the headline. */
+  .hero__visual {
+    grid-column: 8 / -1;
+    padding-left: 16%;
+    padding-bottom: 4%;
+  }
+
+  .hero__photo {
+    height: min(calc(100svh - var(--header-h) - 11rem), 740px);
+    min-height: 440px;
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .hero__packs {
+    width: 70%;
+  }
+}

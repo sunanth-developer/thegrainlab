@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react'
-import { getImage, imageSrc } from '../../data/images.js'
+import { getImage, imageSrc, imageSrcSet } from '../../data/images.js'
 import './Img.css'
 
 /**
  * Manifest-driven responsive image.
  * - `ratio`: CSS aspect-ratio string, 'native' (from the manifest) or 'fill'
  *   (the parent controls the size).
+ * - `fit`: 'cover' for photography, 'contain' for artwork that must not be cropped.
  * - Shows the image's dominant colour while loading and a designed fallback if
  *   the file fails, so there is never an empty box.
  */
@@ -13,8 +14,10 @@ export default function Img({
   imageKey,
   sizes = '100vw',
   ratio = 'native',
+  fit = 'cover',
   position = 'center',
   priority = false,
+  placeholder = true,
   className = '',
   fallbackLabel,
   alt,
@@ -34,12 +37,15 @@ export default function Img({
     .join(' ')
 
   return (
-    <div className={classes} style={{ aspectRatio, backgroundColor: image?.color }}>
+    <div
+      className={classes}
+      style={{ aspectRatio, backgroundColor: placeholder ? image?.color : 'transparent' }}
+    >
       {image && status !== 'error' && (
         <img
           ref={ref}
           src={imageSrc(imageKey)}
-          srcSet={image.widths.map((w) => `${imageSrc(imageKey, w)} ${w}w`).join(', ')}
+          srcSet={imageSrcSet(imageKey)}
           sizes={sizes}
           width={image.width}
           height={image.height}
@@ -49,7 +55,7 @@ export default function Img({
           fetchPriority={priority ? 'high' : 'auto'}
           onLoad={() => setStatus('loaded')}
           onError={() => setStatus('error')}
-          style={{ objectPosition: position }}
+          style={{ objectPosition: position, objectFit: fit }}
         />
       )}
       {(!image || status === 'error') && (

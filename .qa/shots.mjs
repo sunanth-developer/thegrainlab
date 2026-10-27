@@ -46,13 +46,15 @@ async function split(file, name, segment) {
 const jobs = [
   { name: 'd-home', url: '/', vp: [1440, 900], full: true },
   { name: 'm-home', url: '/', vp: [390, 844], mobile: true, full: true },
-  { name: 'd-dosa', url: '/products/dosa-mixes', vp: [1440, 900], full: true },
-  { name: 'd-flours', url: '/products/millet-flours', vp: [1440, 900] },
-  { name: 'd-breakfast', url: '/products/breakfast', vp: [1440, 900], full: true },
-  { name: 'd-products', url: '/products', vp: [1440, 900], full: true },
-  { name: 'm-pasta', url: '/products/millet-pasta', vp: [390, 844], mobile: true, full: true },
-  { name: 'd-404', url: '/nope', vp: [1440, 900] },
   { name: 't-home', url: '/', vp: [820, 1180], full: true },
+  { name: 'd-products', url: '/products', vp: [1440, 900], full: true },
+  { name: 'd-pancakes', url: '/pancake-mixes', vp: [1440, 900], full: true },
+  { name: 'd-vanilla', url: '/products/vanilla-protein-pancake-mix', vp: [1440, 900], full: true },
+  { name: 'd-chocolate', url: '/products/chocolate-protein-pancake-mix', vp: [1440, 900] },
+  { name: 'd-idli', url: '/products/millet-idli-mix', vp: [1440, 900], full: true },
+  { name: 'm-idli', url: '/products/millet-idli-mix', vp: [390, 844], mobile: true, full: true },
+  { name: 'm-products', url: '/products', vp: [390, 844], mobile: true, full: true },
+  { name: 'd-404', url: '/nope', vp: [1440, 900] },
 ]
 
 for (const job of jobs.filter((j) => !only.length || only.includes(j.name))) {
@@ -63,6 +65,8 @@ for (const job of jobs.filter((j) => !only.length || only.includes(j.name))) {
     hasTouch: !!job.mobile,
   })
   const page = await ctx.newPage()
+  page.on('console', (m) => m.type() === 'error' && console.log(`  [${job.name}] console:`, m.text()))
+  page.on('pageerror', (e) => console.log(`  [${job.name}] pageerror:`, e.message))
   await page.goto(BASE + job.url, { waitUntil: 'networkidle' })
   await wait(2600)
   await page.screenshot({ path: `${OUT}${job.name}-first.png` })

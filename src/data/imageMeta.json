@@ -1,5 +1,25 @@
 {
-  "cat-dosa": {
+  "chocolate-hero": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#482818"
+  },
+  "chocolate-texture": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#180808"
+  },
+  "chutney": {
     "width": 1024,
     "height": 1024,
     "widths": [
@@ -7,9 +27,9 @@
       800,
       1024
     ],
-    "color": "#983818"
+    "color": "#f8b838"
   },
-  "cat-flours": {
+  "concept-berry": {
     "width": 864,
     "height": 1152,
     "widths": [
@@ -17,137 +37,38 @@
       800,
       864
     ],
-    "color": "#b8b898"
+    "color": "#c88888"
   },
-  "cat-pancakes": {
-    "width": 1152,
-    "height": 864,
+  "concept-coffee": {
+    "width": 864,
+    "height": 1152,
     "widths": [
       480,
       800,
-      1152
+      864
     ],
-    "color": "#683818"
+    "color": "#c8a878"
   },
-  "cat-pasta": {
+  "fields": {
     "width": 1280,
-    "height": 720,
+    "height": 420,
     "widths": [
+      240,
       480,
-      800,
+      960,
       1280
-    ],
-    "color": "#f8e8d8"
-  },
-  "cat-porridge": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#180818"
-  },
-  "closing": {
-    "width": 1280,
-    "height": 720,
-    "widths": [
-      480,
-      800,
-      1280
-    ],
-    "color": "#381828"
-  },
-  "format-dosa": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#f8e8e8"
-  },
-  "format-flours": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#f8e8d8"
-  },
-  "format-pancakes": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#f8e8e8"
-  },
-  "format-pasta": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#f8e8e8"
-  },
-  "format-porridge": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
-    ],
-    "color": "#f8e8e8"
-  },
-  "gallery-dosa": {
-    "width": 864,
-    "height": 1152,
-    "widths": [
-      480,
-      800,
-      864
     ],
     "color": "#080808"
   },
-  "gallery-pour": {
-    "width": 864,
-    "height": 1152,
+  "final": {
+    "width": 1280,
+    "height": 720,
     "widths": [
       480,
       800,
-      864
+      1280
     ],
-    "color": "#381828"
-  },
-  "gallery-stalks": {
-    "width": 1152,
-    "height": 864,
-    "widths": [
-      480,
-      800,
-      1152
-    ],
-    "color": "#180818"
-  },
-  "gallery-table": {
-    "width": 1024,
-    "height": 1024,
-    "widths": [
-      480,
-      800,
-      1024
-    ],
-    "color": "#382838"
+    "color": "#080808"
   },
   "hero": {
     "width": 864,
@@ -157,9 +78,19 @@
       800,
       864
     ],
-    "color": "#281828"
+    "color": "#987858"
   },
-  "interlude": {
+  "honey-stick": {
+    "width": 1152,
+    "height": 864,
+    "widths": [
+      480,
+      800,
+      1152
+    ],
+    "color": "#c89868"
+  },
+  "idli-hero": {
     "width": 1280,
     "height": 720,
     "widths": [
@@ -167,6 +98,436 @@
       800,
       1280
     ],
-    "color": "#180818"
+    "color": "#f8b828"
+  },
+  "idli-texture": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#c8a868"
+  },
+  "ingredients/arrowroot-powder": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8d8c8"
+  },
+  "ingredients/baking-powder": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8e8d8"
+  },
+  "ingredients/black-gram-dal-flour": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#c8b898"
+  },
+  "ingredients/chocolate-chips": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/cocoa-powder": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8d8c8"
+  },
+  "ingredients/fos": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#b8a898"
+  },
+  "ingredients/foxtail-millet": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#c8b898"
+  },
+  "ingredients/foxtail-millet-rava": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#b89878"
+  },
+  "ingredients/milk-powder": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#c8b8a8"
+  },
+  "ingredients/modified-rice-flour": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/monk-fruit": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/rice-flour": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/salt": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/sodium-bicarbonate": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8d8c8"
+  },
+  "ingredients/sorghum-millet-rava": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8e8d8"
+  },
+  "ingredients/soy-protein-isolate": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/sugar": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8d8c8"
+  },
+  "ingredients/tomato-chutney": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#e8d8c8"
+  },
+  "ingredients/vanilla": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "ingredients/xanthan-gum": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      240,
+      480,
+      864
+    ],
+    "color": "#d8c8b8"
+  },
+  "label-chocolate-back": {
+    "width": 1538,
+    "height": 2480,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#e8a8b8"
+  },
+  "label-chocolate-front": {
+    "width": 1542,
+    "height": 2486,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#e8a8b8"
+  },
+  "label-idli-back": {
+    "width": 1555,
+    "height": 2507,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#f8c818"
+  },
+  "label-idli-front": {
+    "width": 1553,
+    "height": 2490,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#f8c818"
+  },
+  "label-vanilla-back": {
+    "width": 1538,
+    "height": 2480,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#7888b8"
+  },
+  "label-vanilla-front": {
+    "width": 1538,
+    "height": 2482,
+    "widths": [
+      240,
+      480,
+      960,
+      1440
+    ],
+    "color": "#c8c8e8"
+  },
+  "logo": {
+    "width": 1007,
+    "height": 638,
+    "widths": [
+      240,
+      480,
+      960,
+      1007
+    ],
+    "color": "#080808"
+  },
+  "logo-light": {
+    "width": 1007,
+    "height": 638,
+    "widths": [
+      240,
+      480,
+      960,
+      1007
+    ],
+    "color": "#f8e8d8"
+  },
+  "logo-mark": {
+    "width": 1007,
+    "height": 590,
+    "widths": [
+      240,
+      480,
+      960,
+      1007
+    ],
+    "color": "#080808"
+  },
+  "logo-mark-light": {
+    "width": 1007,
+    "height": 590,
+    "widths": [
+      240,
+      480,
+      960,
+      1007
+    ],
+    "color": "#f8e8d8"
+  },
+  "pouch-chocolate": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#e8e8e8"
+  },
+  "pouch-chocolate-back": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#d8a8b8"
+  },
+  "pouch-idli": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#e8d8a8"
+  },
+  "pouch-idli-back": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#e8a828"
+  },
+  "pouch-vanilla": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#e8e8e8"
+  },
+  "pouch-vanilla-back": {
+    "width": 925,
+    "height": 1443,
+    "widths": [
+      240,
+      480,
+      925
+    ],
+    "color": "#7878a8"
+  },
+  "prep-chocolate": {
+    "width": 515,
+    "height": 470,
+    "widths": [
+      240,
+      480,
+      515
+    ],
+    "color": "#983848"
+  },
+  "prep-idli": {
+    "width": 669,
+    "height": 296,
+    "widths": [
+      240,
+      480,
+      669
+    ],
+    "color": "#483818"
+  },
+  "prep-vanilla": {
+    "width": 554,
+    "height": 471,
+    "widths": [
+      240,
+      480,
+      554
+    ],
+    "color": "#585898"
+  },
+  "vanilla-hero": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#f8e8d8"
+  },
+  "vanilla-texture": {
+    "width": 864,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      864
+    ],
+    "color": "#b89878"
   }
 }

@@ -2,7 +2,7 @@ const SITE = 'The Grain Lab'
 
 /** React 19 hoists these tags into <head>. */
 export default function PageMeta({ title, description, image, noindex = false }) {
-  const fullTitle = title ? `${title} — ${SITE}` : `${SITE} — Millet flours, mixes, pasta & breakfast`
+  const fullTitle = title ? `${title} — ${SITE}` : `${SITE} — Millet pancake and idli mixes`
   return (
     <>
       <title>{fullTitle}</title>

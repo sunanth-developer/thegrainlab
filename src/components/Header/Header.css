@@ -1,7 +1,7 @@
 .site-header {
   --header-fg: var(--cocoa-900);
-  --header-bg: rgb(243 236 224 / 0.86);
-  --header-line: rgb(42 27 21 / 0.12);
+  --header-bg: rgb(245 236 220 / 0.86);
+  --header-line: rgb(43 29 21 / 0.1);
 
   position: fixed;
   inset: 0 0 auto;
@@ -13,13 +13,13 @@
 }
 
 .site-header--dark {
-  --header-fg: var(--ivory-100);
-  --header-bg: rgb(37 19 32 / 0.82);
-  --header-line: rgb(243 236 224 / 0.12);
+  --header-fg: var(--parchment-100);
+  --header-bg: rgb(35 24 17 / 0.84);
+  --header-line: rgb(245 236 220 / 0.1);
 }
 
-/* Solid layer fades in once the page scrolls; it takes the tone of the
-   section underneath so the header never fights the composition. */
+/* Transparent over the hero; a blurred layer in the tone of the section
+   underneath fades in once the page scrolls. */
 .site-header::before {
   content: '';
   position: absolute;
@@ -48,7 +48,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-6);
-  height: calc(var(--header-h) + 0.75rem);
+  height: calc(var(--header-h) + 1rem);
   transition: height var(--dur-base) var(--ease-out);
 }
 
@@ -56,8 +56,36 @@
   height: var(--header-h);
 }
 
-.site-header__wordmark {
-  font-size: 1.32rem;
+/* ---------- Logo (ink and light versions cross-fade with the tone) ---------- */
+.site-header__logo {
+  position: relative;
+  z-index: calc(var(--z-menu) + 1);
+  display: block;
+  height: 3.1rem;
+  transition: height var(--dur-base) var(--ease-out);
+}
+
+.site-header.is-scrolled .site-header__logo {
+  height: 2.6rem;
+}
+
+.site-header__logo-img {
+  height: 100%;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.site-header__logo-img--light {
+  position: absolute;
+  inset: 0 auto auto 0;
+  opacity: 0;
+}
+
+.site-header--dark .site-header__logo-img--ink {
+  opacity: 0;
+}
+
+.site-header--dark .site-header__logo-img--light {
+  opacity: 1;
 }
 
 /* ---------- Desktop navigation ---------- */
@@ -76,8 +104,8 @@
   display: inline-block;
   padding-block: var(--space-2);
   font-size: var(--text-sm);
-  font-weight: 550;
-  opacity: 0.78;
+  font-weight: 600;
+  opacity: 0.8;
   transition: opacity var(--dur-fast) var(--ease-out);
 }
 
@@ -87,7 +115,7 @@
   left: 0;
   right: 0;
   bottom: 0.15rem;
-  height: 1px;
+  height: 1.5px;
   background: currentColor;
   transform: scaleX(0);
   transform-origin: right;
@@ -117,7 +145,7 @@
   border: 0;
   background: none;
   font-size: var(--text-sm);
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .menu-toggle__lines {
@@ -154,10 +182,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: var(--space-7);
   overflow-y: auto;
-  padding-block: calc(var(--header-h) + 2.5rem) var(--space-6);
-  background: var(--plum-900);
-  color: var(--ivory-100);
+  padding-block: calc(var(--header-h) + 3rem) var(--space-6);
+  background: var(--espresso);
+  color: var(--parchment-100);
 }
 
 .mobile-menu__nav ul {
@@ -179,14 +208,14 @@
   gap: var(--space-4);
   padding-block: var(--space-3);
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 1.6rem + 6vw, 3.6rem);
+  font-size: clamp(2.3rem, 1.5rem + 5.5vw, 3.4rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
 }
 
 .mobile-menu__link[aria-current='page'] {
   font-style: italic;
-  color: var(--pistachio-400);
+  color: var(--grain-300);
 }
 
 .mobile-menu__index {
@@ -199,9 +228,15 @@
 }
 
 .mobile-menu__foot {
-  padding-top: var(--space-7);
+  display: grid;
+  gap: var(--space-4);
+}
+
+.mobile-menu__products {
+  display: grid;
+  gap: var(--space-2);
   font-size: var(--text-sm);
-  color: var(--text-subtle);
+  color: var(--text-muted);
 }
 
 @media (min-width: 900px) {

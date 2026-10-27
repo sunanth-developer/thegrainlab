@@ -32,9 +32,9 @@
   gap: var(--space-4);
   padding: var(--space-5);
   background:
-    radial-gradient(120% 90% at 30% 20%, rgb(255 255 255 / 0.12), transparent 60%),
-    var(--plum-800);
-  color: var(--ivory-100);
+    radial-gradient(120% 90% at 30% 20%, rgb(255 255 255 / 0.18), transparent 60%),
+    var(--oat);
+  color: var(--cocoa-800);
   text-align: center;
 }
 
@@ -42,7 +42,7 @@
   width: 14px;
   height: 22px;
   border-radius: 50%;
-  background: var(--honey);
+  background: var(--grain-500);
   transform: rotate(24deg);
 }
 

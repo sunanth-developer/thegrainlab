@@ -1,12 +1,14 @@
 /**
- * Primary navigation. Each item points at a category slug, a collection slug or
- * the full catalogue. Items whose target is not published are hidden.
+ * Primary navigation. `match` decides which routes mark an item as current,
+ * so product pages highlight their family.
  */
-
 export const navigation = [
-  { label: 'All products', to: '/products', type: 'all' },
-  { label: 'Flours', type: 'category', slug: 'millet-flours' },
-  { label: 'Dosa mixes', type: 'category', slug: 'dosa-mixes' },
-  { label: 'Pasta', type: 'category', slug: 'millet-pasta' },
-  { label: 'Breakfast', type: 'collection', slug: 'breakfast' },
+  { label: 'Home', to: '/', match: (p) => p === '/' },
+  { label: 'Explore Products', to: '/products', match: (p) => p === '/products' },
+  {
+    label: 'Pancake Mixes',
+    to: '/pancake-mixes',
+    match: (p) => p === '/pancake-mixes' || /^\/products\/(vanilla|chocolate)-protein-pancake-mix$/.test(p),
+  },
+  { label: 'Millet Idli Mix', to: '/products/millet-idli-mix', match: (p) => p === '/products/millet-idli-mix' },
 ]

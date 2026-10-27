@@ -2,9 +2,12 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { EASE } from '../../lib/motion.js'
-import { isNavActive, pad } from '../../lib/catalogue.js'
+import { navigation } from '../../data/navigation.js'
+import { getLaunchProducts, pad, productPath } from '../../lib/catalogue.js'
 
-export default function MobileMenu({ navigation, pathname, onNavigate }) {
+const products = getLaunchProducts()
+
+export default function MobileMenu({ pathname, onNavigate }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -36,41 +39,48 @@ export default function MobileMenu({ navigation, pathname, onNavigate }) {
     >
       <nav className="mobile-menu__nav container" aria-label="Mobile">
         <ul>
-          {navigation.map((item, i) => {
-            const active = isNavActive(item, pathname)
-            return (
-              <li key={item.label} className="mobile-menu__item">
-                <motion.span
-                  className="mobile-menu__mask"
-                  initial={{ y: '110%' }}
-                  animate={{ y: '0%' }}
-                  transition={{ delay: 0.18 + i * 0.06, duration: 0.9, ease: EASE }}
+          {navigation.map((item, i) => (
+            <li key={item.label} className="mobile-menu__item">
+              <motion.span
+                className="mobile-menu__mask"
+                initial={{ y: '110%' }}
+                animate={{ y: '0%' }}
+                transition={{ delay: 0.18 + i * 0.06, duration: 0.9, ease: EASE }}
+              >
+                <Link
+                  to={item.to}
+                  className="mobile-menu__link"
+                  aria-current={item.match(pathname) ? 'page' : undefined}
+                  onClick={onNavigate}
                 >
-                  <Link
-                    to={item.to}
-                    className="mobile-menu__link"
-                    aria-current={active ? 'page' : undefined}
-                    onClick={onNavigate}
-                  >
-                    <span className="mobile-menu__index" aria-hidden="true">
-                      {pad(i + 1)}
-                    </span>
-                    {item.label}
-                  </Link>
-                </motion.span>
-              </li>
-            )
-          })}
+                  <span className="mobile-menu__index" aria-hidden="true">
+                    {pad(i + 1)}
+                  </span>
+                  {item.label}
+                </Link>
+              </motion.span>
+            </li>
+          ))}
         </ul>
       </nav>
-      <motion.p
+
+      <motion.div
         className="mobile-menu__foot container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.7, ease: EASE }}
       >
-        Millet flours, mixes, pasta and breakfast.
-      </motion.p>
+        <p className="label">The launch collection</p>
+        <ul className="mobile-menu__products">
+          {products.map((p) => (
+            <li key={p.slug}>
+              <Link to={productPath(p)} onClick={onNavigate} className="link-line">
+                {p.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
     </motion.div>
   )
 }

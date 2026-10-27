@@ -25,3 +25,11 @@ dist-ssr
 
 # Local QA output
 .qa/shots
+
+# Source material that must never be published
+*.pdf
+.qa/venv
+.qa/deck
+.qa/labels
+.qa/info
+*.docx

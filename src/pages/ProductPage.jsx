@@ -1,109 +1,53 @@
 import { useParams } from 'react-router-dom'
 import PageMeta from '../components/PageMeta/PageMeta.jsx'
-import Img from '../components/Img/Img.jsx'
-import Arrow from '../components/Icon/Arrow.jsx'
-import MaskReveal from '../components/motion/MaskReveal.jsx'
-import FadeUp from '../components/motion/FadeUp.jsx'
-import LineReveal from '../components/motion/LineReveal.jsx'
-import FinalStatement from '../components/FinalStatement/FinalStatement.jsx'
+import ProductHero from '../components/product/ProductHero.jsx'
+import SectionNav from '../components/product/SectionNav.jsx'
+import ProductHighlights from '../components/product/ProductHighlights.jsx'
+import IngredientStory from '../components/product/IngredientStory.jsx'
+import NutritionPanel from '../components/product/NutritionPanel.jsx'
+import PreparationSteps from '../components/product/PreparationSteps.jsx'
+import ServingSuggestion from '../components/product/ServingSuggestion.jsx'
+import StorageInfo from '../components/product/StorageInfo.jsx'
+import RelatedProducts from '../components/product/RelatedProducts.jsx'
 import NotFound from './NotFound.jsx'
-import { categoryPath, getCategory, getProduct, hasValue } from '../lib/catalogue.js'
-import { formatPrice } from '../lib/format.js'
 import { imageSrc } from '../data/images.js'
-import { Link } from 'react-router-dom'
+import { getProduct, getRelated, proteinText } from '../lib/catalogue.js'
+import '../components/product/product.css'
 import './pages.css'
 
-/** Product detail. Every field is optional and hidden when not verified. */
+/** One template, each product's own data: overview → highlights → ingredients → nutrition → preparation → serving → storage. */
 export default function ProductPage() {
-  const { slug, productId } = useParams()
-  const product = getProduct(slug, productId)
+  const { slug } = useParams()
+  const product = getProduct(slug)
   if (!product) return <NotFound />
 
-  const category = getCategory(product.category)
-  const price = formatPrice(product.price)
-  const nutrition = product.nutrition?.rows?.filter((r) => hasValue(r.label) && hasValue(r.value)) ?? []
-  const meta = [
-    hasValue(product.packSize) && ['Pack size', product.packSize],
-    price && ['Price', price],
-    hasValue(product.availability) && ['Availability', product.availability],
-  ].filter(Boolean)
-
+  const { theme } = product
   return (
-    <>
-      <PageMeta title={product.name} description={product.description} image={imageSrc(product.image)} />
-
-      <section className="section surface page-top" data-tone="light" aria-labelledby="product-title">
-        <div className="container product">
-          <MaskReveal trigger="mount">
-            <Img imageKey={product.image} ratio="4 / 5" priority sizes="(min-width: 900px) 52vw, 100vw" fallbackLabel={product.name} />
-          </MaskReveal>
-
-          <div className="product__details">
-            <nav aria-label="Breadcrumb" className="breadcrumbs">
-              <ol>
-                <li>
-                  <Link to="/products" className="link-line">All products</Link>
-                </li>
-                {category && (
-                  <li>
-                    <Link to={categoryPath(category.slug)} className="link-line">{category.name}</Link>
-                  </li>
-                )}
-                <li aria-current="page">{product.name}</li>
-              </ol>
-            </nav>
-            <LineReveal as="h1" id="product-title" trigger="mount" lines={[product.name]} className="title-md" />
-            {hasValue(product.description) && <FadeUp trigger="mount" as="p" className="lede">{product.description}</FadeUp>}
-
-            {meta.length > 0 && (
-              <dl className="product__meta">
-                {meta.map(([label, value]) => (
-                  <div key={label}>
-                    <dt>{label}</dt>
-                    <dd>{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            )}
-
-            {hasValue(product.ingredients) && (
-              <div className="product__block">
-                <h2>Ingredients</h2>
-                <p>{product.ingredients.join(', ')}</p>
-              </div>
-            )}
-
-            {nutrition.length > 0 && (
-              <div className="product__block">
-                <h2>Nutritional information</h2>
-                <table>
-                  {hasValue(product.nutrition.basis) && <caption>{product.nutrition.basis}</caption>}
-                  <tbody>
-                    {nutrition.map((row) => (
-                      <tr key={row.label}>
-                        <th scope="row">{row.label}</th>
-                        <td>{row.value}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
-            {hasValue(product.purchaseUrl) && (
-              <a className="btn" href={product.purchaseUrl} target="_blank" rel="noopener noreferrer">
-                Buy {product.name}
-                <span className="visually-hidden"> (opens in a new tab)</span>
-                <span className="btn__icon">
-                  <Arrow direction="up-right" />
-                </span>
-              </a>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <FinalStatement />
-    </>
+    <div
+      className="pdp"
+      style={{
+        '--p-bg': theme.background,
+        '--p-deep': theme.deep,
+        '--p-strong': theme.strong,
+        '--p-ink': theme.ink,
+        '--p-accent': theme.accent,
+        '--p-highlight': theme.highlight,
+      }}
+    >
+      <PageMeta
+        title={product.name}
+        description={`${product.description} ${proteinText(product)}. Ingredients, allergens, nutrition, preparation and storage.`}
+        image={imageSrc(product.images.pouch)}
+      />
+      <ProductHero product={product} />
+      <SectionNav label={`${product.name} sections`} />
+      <ProductHighlights product={product} />
+      <IngredientStory product={product} />
+      <NutritionPanel product={product} />
+      <PreparationSteps product={product} />
+      <ServingSuggestion product={product} />
+      <StorageInfo product={product} />
+      <RelatedProducts products={getRelated(product)} />
+    </div>
   )
 }

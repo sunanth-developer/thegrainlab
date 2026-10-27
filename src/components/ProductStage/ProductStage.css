@@ -1,0 +1,192 @@
+.stage {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+/* ---------- Media: colour plinth, photograph, real pack ---------- */
+.stage__media {
+  position: relative;
+  padding: 0 0 var(--space-7) var(--space-5);
+}
+
+.stage__plinth {
+  position: absolute;
+  inset: 12% 8% 0 0;
+  background: var(--p-bg);
+  border-radius: var(--radius-lg);
+  transform-origin: bottom;
+}
+
+.stage__photo {
+  position: relative;
+  border-radius: var(--radius-md);
+}
+
+.stage__pack {
+  position: absolute;
+  z-index: 2;
+  right: 4%;
+  bottom: 0;
+  width: clamp(108px, 30%, 210px);
+}
+
+/* ---------- Info ---------- */
+.stage__info,
+.stage__head,
+.stage__detail {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.stage__eyebrow {
+  display: inline-flex;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stage__eyebrow span {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stage__name {
+  font-size: var(--title-md);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.stage__tagline {
+  max-width: 26ch;
+  font-family: var(--font-display);
+  font-size: var(--title-xs);
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+
+.stage__contents {
+  display: grid;
+  gap: var(--space-1);
+  width: 100%;
+  padding-block: var(--space-4);
+  border-block: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.stage__contents span {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-accent);
+}
+
+.stage__desc {
+  max-width: 44ch;
+  color: var(--text-muted);
+}
+
+.stage__link {
+  margin-top: var(--space-2);
+}
+
+@media (min-width: 900px) {
+  .stage {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+
+  /* Portrait: large photograph left, details right */
+  .stage--portrait .stage__media {
+    grid-column: 1 / span 7;
+    padding: 0 0 var(--space-8) var(--space-8);
+  }
+
+  .stage--portrait .stage__plinth {
+    inset: 14% 22% 0 0;
+  }
+
+  .stage--portrait .stage__photo {
+    width: 82%;
+    margin-left: auto;
+  }
+
+  .stage--portrait .stage__pack {
+    right: auto;
+    left: 0;
+    bottom: 4%;
+    width: clamp(150px, 30%, 230px);
+  }
+
+  .stage--portrait .stage__info {
+    grid-column: 9 / -1;
+  }
+
+  /* Reverse: details left, square photograph right */
+  .stage--reverse .stage__info {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+  }
+
+  .stage--reverse .stage__media {
+    grid-column: 7 / -1;
+    grid-row: 1;
+    padding: var(--space-8) var(--space-8) 0 0;
+  }
+
+  .stage--reverse .stage__plinth {
+    inset: 0 0 18% 24%;
+  }
+
+  .stage--reverse .stage__photo {
+    width: 80%;
+  }
+
+  .stage--reverse .stage__pack {
+    right: 0;
+    bottom: -6%;
+    width: clamp(150px, 30%, 220px);
+  }
+
+  /* Wide: panoramic photograph, details in two columns beneath */
+  .stage--wide .stage__media {
+    grid-column: 1 / -1;
+    padding: 0 var(--space-8) var(--space-8) 0;
+  }
+
+  .stage--wide .stage__plinth {
+    inset: 18% 0 0 30%;
+  }
+
+  .stage--wide .stage__photo {
+    width: 86%;
+  }
+
+  .stage--wide .stage__pack {
+    right: 2%;
+    bottom: 6%;
+    width: clamp(160px, 17%, 240px);
+  }
+
+  .stage--wide .stage__info {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--gutter);
+    align-items: start;
+    padding-top: var(--space-6);
+  }
+
+  .stage--wide .stage__head {
+    grid-column: 1 / span 5;
+  }
+
+  .stage--wide .stage__detail {
+    grid-column: 6 / span 5;
+  }
+}

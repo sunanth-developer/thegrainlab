@@ -1,23 +1,38 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { AnimatePresence, MotionConfig, motion } from 'motion/react'
 import Header from './components/Header/Header.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Home from './pages/Home.jsx'
 import Products from './pages/Products.jsx'
-import CategoryPage from './pages/CategoryPage.jsx'
+import PancakeMixes from './pages/PancakeMixes.jsx'
 import ProductPage from './pages/ProductPage.jsx'
 import NotFound from './pages/NotFound.jsx'
 import { EASE } from './lib/motion.js'
+
+function scrollToHash() {
+  const id = decodeURIComponent(window.location.hash.slice(1))
+  const target = id && document.getElementById(id)
+  if (!target) return false
+  target.scrollIntoView({ behavior: 'instant', block: 'start' })
+  return true
+}
 
 function AppShell() {
   const location = useLocation()
   const mainRef = useRef(null)
 
   const onPageEnter = () => {
-    window.scrollTo({ top: 0, behavior: 'instant' })
+    if (!scrollToHash()) window.scrollTo({ top: 0, behavior: 'instant' })
     mainRef.current?.focus({ preventScroll: true })
   }
+
+  // Same-page hash links and deep links (e.g. /products#on-the-horizon).
+  useEffect(() => {
+    if (!location.hash) return undefined
+    const timer = setTimeout(scrollToHash, 60)
+    return () => clearTimeout(timer)
+  }, [location.hash])
 
   return (
     <>
@@ -36,8 +51,8 @@ function AppShell() {
             <Routes location={location}>
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<Products />} />
-              <Route path="/products/:slug" element={<CategoryPage />} />
-              <Route path="/products/:slug/:productId" element={<ProductPage />} />
+              <Route path="/products/:slug" element={<ProductPage />} />
+              <Route path="/pancake-mixes" element={<PancakeMixes />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </motion.div>

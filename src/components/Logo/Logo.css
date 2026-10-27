@@ -1,0 +1,16 @@
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  width: auto;
+  height: 100%;
+  max-width: none;
+}
+
+.logo-fallback {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  line-height: 1;
+}

@@ -1,14 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
-import Wordmark from '../Wordmark/Wordmark.jsx'
+import { LogoImage } from '../Logo/Logo.jsx'
 import MobileMenu from './MobileMenu.jsx'
-import { getNavigation, isNavActive } from '../../lib/catalogue.js'
+import { navigation } from '../../data/navigation.js'
 import { useHeaderState } from '../../lib/hooks.js'
 import { EASE } from '../../lib/motion.js'
 import './Header.css'
-
-const navigation = getNavigation()
 
 export default function Header() {
   const { pathname } = useLocation()
@@ -17,6 +15,11 @@ export default function Header() {
   const [openOn, setOpenOn] = useState(null)
   const open = openOn === pathname
   const toggleRef = useRef(null)
+
+  // Lets sticky in-page navigation sit below the header only while it is shown.
+  useEffect(() => {
+    document.documentElement.dataset.header = hidden && !open ? 'hidden' : 'shown'
+  }, [hidden, open])
 
   useEffect(() => {
     if (!open) return undefined
@@ -52,22 +55,26 @@ export default function Header() {
           className="site-header__inner container"
           initial={{ opacity: 0, y: -14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
+          transition={{ duration: 0.9, delay: 0.35, ease: EASE }}
         >
-          <Wordmark className="site-header__wordmark" onClick={() => setOpenOn(null)} />
+          <Link to="/" className="site-header__logo" aria-label="The Grain Lab — home" onClick={() => setOpenOn(null)}>
+            <LogoImage variant="mark" className="site-header__logo-img site-header__logo-img--ink" alt="" />
+            <LogoImage variant="mark-light" className="site-header__logo-img site-header__logo-img--light" alt="" />
+          </Link>
 
           <nav className="site-nav" aria-label="Primary">
             <ul>
-              {navigation.map((item) => {
-                const active = isNavActive(item, pathname)
-                return (
-                  <li key={item.label}>
-                    <Link to={item.to} className="site-nav__link" aria-current={active ? 'page' : undefined}>
-                      {item.label}
-                    </Link>
-                  </li>
-                )
-              })}
+              {navigation.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    className="site-nav__link"
+                    aria-current={item.match(pathname) ? 'page' : undefined}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
 
@@ -89,9 +96,7 @@ export default function Header() {
       </header>
 
       <AnimatePresence>
-        {open && (
-          <MobileMenu navigation={navigation} pathname={pathname} onNavigate={() => setOpenOn(null)} />
-        )}
+        {open && <MobileMenu pathname={pathname} onNavigate={() => setOpenOn(null)} />}
       </AnimatePresence>
     </>
   )
